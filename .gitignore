@@ -1,0 +1,17 @@
+node_modules
+env
+.env
+.DS_Store
+.vscode
+
+#Hardhat files
+cache
+artifacts
+
+draft
+solidity
+starknet-artifacts
+midi-files
+midi2json.ts
+
+
