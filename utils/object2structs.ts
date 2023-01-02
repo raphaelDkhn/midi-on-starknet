@@ -19,10 +19,31 @@ export class Object2Structs {
         result += this.addValues(value, `${indent}\t`);
         result += `${indent}),\n`;
       } else {
-        // if the value is not an object, simply append it to the result
-        result += `${indent}${
-          key.charAt(0).toLowerCase() + key.slice(1)
-        } = ${value},\n`;
+        if (key == "Num_bpm") {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value} + (${value} * tempo_flex/10000),\n`;
+        } else if (key == "Num_duration") {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value} + (${value} * duration_flex/10000),\n`;
+        } else if (key == "Num_durationTicks") {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value} + (${value} * duration_flex/10000),\n`;
+        } else if (key == "Num_velocity") {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value} + (${value} * velocity_scale/10000),\n`;
+        } else if (key == "Num_midi") {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value} + transposition,\n`;
+        } else {
+          result += `${indent}${
+            key.charAt(0).toLowerCase() + key.slice(1)
+          } = ${value},\n`;
+        }
       }
     }
 

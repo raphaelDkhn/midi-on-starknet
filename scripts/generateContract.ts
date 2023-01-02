@@ -12,12 +12,6 @@ export async function generateContract(
   fileName: string,
   hre: HardhatRuntimeEnvironment
 ) {
-  const obj = JSON.parse(fs.readFileSync(json, "utf-8"));
-  const obj2structs = new Object2Structs();
-
-  //format object
-  const objectFormatted = formatObject(obj, hre);
-
   const contractTop = [
     "// SPDX-License-Identifier: MIT\n",
     "\n%lang starknet\n",
@@ -35,10 +29,19 @@ export async function generateContract(
     "\tsyscall_ptr : felt*,\n",
     "\tpedersen_ptr : HashBuiltin*,\n",
     "\trange_check_ptr\n",
-    "} () -> (object: Root) {\n",
+    "} (\n",
+    "\	tempo_flex: felt,\n",
+    "\	duration_flex: felt,\n",
+    "\	transposition: felt,\n",
+    "\	velocity_scale: felt,\n",
+    ") -> (object: Root) {\n",
     "\n\t// build up the struct from bottom up\n",
     "\n\tlet object = Root (\n",
   ];
+
+  const obj = JSON.parse(fs.readFileSync(json, "utf-8"));
+  const objectFormatted = formatObject(obj, hre);
+  const obj2structs = new Object2Structs();
 
   const addValues = obj2structs.addValues(objectFormatted, "\t\t");
 
