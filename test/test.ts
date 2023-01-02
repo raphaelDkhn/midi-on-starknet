@@ -21,7 +21,7 @@ describe("Test", function () {
       tempo_flex: BigInt(5000), // +5000bps (+50%)
       duration_flex: BigInt(-5000), // -5000bps (-50%)
       transposition: BigInt(2 * decimals), //  increasing the pitch of all notes by 2 semitones
-      velocity_scale: BigInt(3050), // -3050 (-30.5%)
+      velocity_scale: BigInt(3050), // 3050 (30.5%)
     });
 
     const retreived_midi = onchainObjectToJson(retreived_object.object);
