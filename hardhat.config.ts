@@ -4,12 +4,20 @@ import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-waffle";
 import "@shardlabs/starknet-hardhat-plugin";
 import { generateContract } from "./scripts/generateContract";
+import { json2midi } from "./scripts/json2midi";
+
+task("json2midi", "convert midi JSON to a midi file")
+  .addPositionalParam("jsonPath", "path to the JSON file")
+  .addPositionalParam("resultPath", "path to the midi file")
+  .setAction(async ({ jsonPath, resultPath }) => {
+    return await json2midi(jsonPath, resultPath);
+  });
 
 task("generateContract", "represent a JSON as a Starknet smart contract")
-  .addPositionalParam("json", "path to the JSON file")
+  .addPositionalParam("jsonPath", "path to the JSON file")
   .addPositionalParam("name", "name of the generated file")
-  .setAction(async ({ json, name }, hre) => {
-    return await generateContract(json, name, hre);
+  .setAction(async ({ jsonPath, name }, hre) => {
+    return await generateContract(jsonPath, name, hre);
   });
 
 const config: HardhatUserConfig = {
