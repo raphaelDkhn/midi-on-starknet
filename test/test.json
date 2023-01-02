@@ -2,7 +2,7 @@
   "header": {
     "keySignatures": [],
     "meta": [],
-    "name": "",
+    "name": "abc",
     "ppq": 96,
     "tempos": [
       { "bpm": 120, "ticks": 0 },
@@ -27,6 +27,7 @@
         {
           "duration": 0.25,
           "durationTicks": 48,
+          "name": "A#",
           "midi": 61,
           "ticks": 13845,
           "time": 0,

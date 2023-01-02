@@ -35,9 +35,17 @@ export function formatObject(obj: any, hre: HardhatRuntimeEnvironment): any {
                 ] = formatObject(value[i], hre);
                 break;
               case typeof value[i] === "object":
-                convertedObj[`Arr_${randomValue}_${key}`][
-                  `Ele${i}_obj_${randomValue}`
-                ] = formatObject(value[i], hre);
+                if (key === "notes") {
+                  // Remove the "name" field from the "notes" objects
+                  const { name, ...rest } = value[i];
+                  convertedObj[`Arr_${randomValue}_${key}`][
+                    `Ele${i}_obj_${randomValue}`
+                  ] = formatObject(rest, hre);
+                } else {
+                  convertedObj[`Arr_${randomValue}_${key}`][
+                    `Ele${i}_obj_${randomValue}`
+                  ] = formatObject(value[i], hre);
+                }
                 break;
               case typeof value[i] === "string":
                 if (value[i].length < 32 && value[i].length > 0) {
