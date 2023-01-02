@@ -64,9 +64,9 @@ export function formatObject(obj: any, hre: HardhatRuntimeEnvironment): any {
                 ] = value[i] == true ? 1n : 0n;
                 break;
               case typeof value[i] === "number":
-                convertedObj[`Arr_${randomValue}_${key}`][
-                  `Ele${i}_num_${randomValue}`
-                ] = BigInt(value[i] * decimals);
+                  convertedObj[`Arr_${randomValue}_${key}`][
+                    `Ele${i}_num_${randomValue}`
+                  ] = BigInt(value[i] * decimals);
                 break;
             }
           }
@@ -95,7 +95,12 @@ export function formatObject(obj: any, hre: HardhatRuntimeEnvironment): any {
         convertedObj[`Bool_${key}`] = value == true ? 1n : 0n;
         break;
       case typeof value === "number":
-        convertedObj[`Num_${key}`] = BigInt(value * decimals);
+        if (key === "velocity") {
+          convertedObj[`Num_${key}`] = BigInt(value.toFixed(5) * decimals);
+        } else {
+          convertedObj[`Num_${key}`] = BigInt(value * decimals);
+        }
+
         break;
     }
   }

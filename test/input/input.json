@@ -6,9 +6,7 @@
     "ppq": 96,
     "tempos": [
       { "bpm": 120, "ticks": 0 },
-      { "bpm": 150, "ticks": 13824 },
-      { "bpm": 160, "ticks": 13844 }
-
+      { "bpm": 150, "ticks": 13824 }
     ],
     "timeSignatures": [{ "ticks": 0, "timeSignature": [4, 4], "measures": 0 }]
   },
@@ -30,6 +28,15 @@
           "name": "A#",
           "midi": 61,
           "ticks": 13845,
+          "time": 0,
+          "velocity": 0.7874015748031497
+        },
+        {
+          "duration": 0.09583333333333854,
+          "durationTicks": 23,
+          "name": "C#",
+          "midi": 73,
+          "ticks": 13846,
           "time": 0,
           "velocity": 0.7874015748031497
         }
