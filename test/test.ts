@@ -16,7 +16,7 @@ describe("Test", function () {
     contract = await contractFactory.deploy();
   });
 
-  it("The object retrieved from the contract should be the same as the original JSON object", async () => {
+  it("The object retrieved from the contract should be the same as the expected object", async () => {
     const retreived_object = await contract.call("retrieve_object", {
       tempo_flex: BigInt(5000), // +5000bps (+50%)
       duration_flex: BigInt(-5000), // -5000bps (-50%)
