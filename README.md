@@ -1,7 +1,15 @@
 
-# Represent JSON Object On Starknet 💫
+# Represent MIDI Object On Starknet 💫
 
-An experimental project for representing any JSON data structure as a [Starknet](https://starkware.co/starknet/) smart contract. It demonstrates the feasibility of hosting complex objects, such as MIDI compositions, in smart contracts
+An experimental project for representing musical MIDI data as a [Starknet](https://starkware.co/starknet/) smart contract.
+
+## MIDI manipulation
+This project allows you to do midi manipulation: 
+
+- `Tempo flex`: change the tempos by a certain basis point.
+- `Duration flex`: change the duration of all notes in a MIDI by a certain basis point.
+- `Transposition`: shift the pitch of all notes in a MIDI by a certain number of semitones.
+- `Velocity Scale`: adjust the velocity of all notes in a MIDI by a certain basis point.
 
 ## How to run the project? 
 
@@ -18,7 +26,7 @@ nix-shell
 ## Generate a contract
 To represent a JSON object as a Starknet smart contract:
 - Create a new folder and place the JSON file in it.
-- Run the following command:
+- Run the following task:
 ```
 npx hardhat generateContract <path-to-json-file> <name-of-generated-file>
 ```
@@ -32,7 +40,25 @@ npx hardhat generateContract example/input/midi.json midi-generated
 
 ## Retrieve onchain object
 Once your contract is deployed, you can call the smart contract's `retrieve_object` function to get a representation of your original JSON object. 
-To convert this object back to a JSON style, you can use the [onchainObjectToJSON](https://github.com/raphaelDkhn/json2starknet/blob/main/utils/onchainObjectToJson.ts) function.
+
+Run the following task:
+```
+npx hardhat retreiveMidi --contract-name --contract-address --result-path --tempo-flex --duration-flex --transposition --velocity-scale
+```
+This will retrieve the midi object from a deployed contract. 
+- `contract-name`: name of the contract
+- `contract-address`: address of the deployed contract
+- `result-path`: path to the created midi file
+- `tempo-flex`: change the tempos by a certain basis point
+- `duration-flex`: change the duration of all notes in a MIDI file by a certain basis point
+- `transposition`: shift the pitch of all notes in a MIDI file by a certain number of semitones
+- `velocity-scale`: adjust the velocity of all notes in a MIDI file by a certain basis point
+
+### Example:
+```
+npx hardhat retreiveMidi --contractName midi-generated --contractAddress 0x... --resultPath example/result/example.mid --tempoFlex 5000 --durationFlex -5000 --transposition 2 --velocityScale 3050
+```
+
 ## Feedback
 
 If you have any comments, suggestions, or encounter any problems, please let me know. You can submit your feedback by creating an issue on this repository, or you can contact me on Twitter at [@raphael_dkhn](https://twitter.com/raphael_dkhn). Thank you for your support!

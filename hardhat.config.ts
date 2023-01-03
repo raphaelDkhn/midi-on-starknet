@@ -31,9 +31,9 @@ task("generateContract", "represent a midi JSON as a Starknet smart contract")
 
 task("retreiveMidi", "retrieve the midi object from a deployed contract")
   .addParam("contractName", "name of the contract")
-  .addParam("address", "address of the deployed contract")
+  .addParam("contractAddress", "address of the deployed contract")
   .addParam("resultPath", "path to the created midi file")
-  .addParam("tempoFlex", "change the tempos by a certain basis point.")
+  .addParam("tempoFlex", "change the tempos by a certain basis point")
   .addParam(
     "durationFlex",
     "change the duration of all notes in a MIDI file by a certain basis point"
@@ -44,13 +44,13 @@ task("retreiveMidi", "retrieve the midi object from a deployed contract")
   )
   .addParam(
     "velocityScale",
-    "adjust the velocity of all notes in a MIDI file by a certain basis point."
+    "adjust the velocity of all notes in a MIDI file by a certain basis point"
   )
   .setAction(
     async (
       {
         contractName,
-        address,
+        contractAddress,
         resultPath,
         tempoFlex,
         durationFlex,
@@ -61,7 +61,7 @@ task("retreiveMidi", "retrieve the midi object from a deployed contract")
     ) => {
       return await retrieveMidi(
         contractName,
-        address,
+        contractAddress,
         resultPath,
         tempoFlex,
         durationFlex,
