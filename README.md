@@ -56,7 +56,7 @@ This will retrieve the midi object from a deployed contract.
 
 ### Example:
 ```
-npx hardhat retreiveMidi --contractName midi-generated --contractAddress 0x... --resultPath example/result/example.mid --tempoFlex 5000 --durationFlex -5000 --transposition 2 --velocityScale 3050
+npx hardhat retrieveMidi --contractName midi-generated --contractAddress 0x... --resultPath example/result/example.mid --tempoFlex 5000 --durationFlex -5000 --transposition 2 --velocityScale 3050
 ```
 
 ## Feedback

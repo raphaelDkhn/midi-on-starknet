@@ -29,7 +29,7 @@ task("generateContract", "represent a midi JSON as a Starknet smart contract")
     return await generateContract(jsonPath, name, hre);
   });
 
-task("retreiveMidi", "retrieve the midi object from a deployed contract")
+task("retrieveMidi", "retrieve the midi object from a deployed contract")
   .addParam("contractName", "name of the contract")
   .addParam("contractAddress", "address of the deployed contract")
   .addParam("resultPath", "path to the created midi file")
