@@ -11,7 +11,5 @@ artifacts
 draft
 solidity
 starknet-artifacts
-midi-files
-midi2json.ts
 
 
