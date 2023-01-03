@@ -28,6 +28,24 @@ task("generateContract", "represent a JSON as a Starknet smart contract")
     return await generateContract(jsonPath, name, hre);
   });
 
+task("retreiveMidi", "retrieve the midi object from a deployed contract")
+  .addParam("contractName", "name of the contract")
+  .addParam("address", "address of the deployed contract")
+  .addParam("resultPath", "path to the created midi file")
+  .addParam("tempoFlex", "change the tempos by a certain basis point.")
+  .addParam(
+    "durationFlex",
+    "change the duration of all notes in a MIDI file by a certain basis point"
+  )
+  .addParam(
+    "transposition",
+    "shift the pitch of all notes in a MIDI file by a certain number of semitones"
+  )
+  .addParam(
+    "velocityScale",
+    "adjust the velocity of all notes in a MIDI file by a certain basis point."
+  );
+
 const config: HardhatUserConfig = {
   solidity: "0.8.9",
   paths: {
