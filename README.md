@@ -1,5 +1,5 @@
 
-# Represent MIDI Object On Starknet 💫
+# Represent And Manipulate MIDI On Starknet 💫
 
 An experimental project for representing musical MIDI data as a [Starknet](https://starkware.co/starknet/) smart contract.
 
