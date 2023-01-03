@@ -43,7 +43,7 @@ Once your contract is deployed, you can call the smart contract's `retrieve_obje
 
 Run the following task:
 ```
-npx hardhat retreiveMidi --contract-name --contract-address --result-path --tempo-flex --duration-flex --transposition --velocity-scale
+npx hardhat retreiveMidi [--contract-name] [--contract-address] [--result-path] [--tempo-flex] [--duration-flex] [--transposition] [--velocity-scale]
 ```
 This will retrieve the midi object from a deployed contract. 
 - `contract-name`: name of the contract
