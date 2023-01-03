@@ -1,5 +1,8 @@
-import { starknet } from "hardhat";
-import { StarknetContract, StarknetContractFactory } from "hardhat/types";
+import {
+  HardhatRuntimeEnvironment,
+  StarknetContract,
+  StarknetContractFactory,
+} from "hardhat/types";
 import { decimals } from "../utils/constants";
 import { onchainObjectToJson } from "../utils/onchainObjectToJson";
 import * as fs from "fs";
@@ -11,10 +14,11 @@ export async function retreiveMidi(
   tempoFlex: number,
   durationFlex: number,
   transposition: number,
-  velocityScale: number
+  velocityScale: number,
+  hre: HardhatRuntimeEnvironment
 ) {
   const contractFactory: StarknetContractFactory =
-    await starknet.getContractFactory(contractName);
+    await hre.starknet.getContractFactory(contractName);
 
   const contract: StarknetContract = await contractFactory.getContractAt(
     address
@@ -27,7 +31,7 @@ export async function retreiveMidi(
     velocity_scale: BigInt(velocityScale),
   });
 
-  const retreived_midi = onchainObjectToJson(retreived_object.object);
+  const retreived_midi = onchainObjectToJson(retreived_object.object, hre);
   const midiJSON = JSON.stringify(retreived_midi);
   fs.writeFileSync(resultPath, midiJSON);
 }

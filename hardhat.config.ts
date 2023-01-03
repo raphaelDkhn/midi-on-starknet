@@ -6,6 +6,7 @@ import "@shardlabs/starknet-hardhat-plugin";
 import { generateContract } from "./scripts/generateContract";
 import { json2midi } from "./scripts/json2midi";
 import { midi2json } from "./scripts/midi2json";
+import { retreiveMidi } from "./scripts/retrieveMidi";
 
 task("midi2json", "convert midi to a midi JSON")
   .addPositionalParam("midiPath", "path to the MIDI file")
@@ -21,7 +22,7 @@ task("json2midi", "convert midi JSON to a midi file")
     return await json2midi(jsonPath, resultPath);
   });
 
-task("generateContract", "represent a JSON as a Starknet smart contract")
+task("generateContract", "represent a midi JSON as a Starknet smart contract")
   .addPositionalParam("jsonPath", "path to the JSON file")
   .addPositionalParam("name", "name of the generated file")
   .setAction(async ({ jsonPath, name }, hre) => {
@@ -44,6 +45,31 @@ task("retreiveMidi", "retrieve the midi object from a deployed contract")
   .addParam(
     "velocityScale",
     "adjust the velocity of all notes in a MIDI file by a certain basis point."
+  )
+  .setAction(
+    async (
+      {
+        contractName,
+        address,
+        resultPath,
+        tempoFlex,
+        durationFlex,
+        transposition,
+        velocityScale,
+      },
+      hre
+    ) => {
+      return await retreiveMidi(
+        contractName,
+        address,
+        resultPath,
+        tempoFlex,
+        durationFlex,
+        transposition,
+        velocityScale,
+        hre
+      );
+    }
   );
 
 const config: HardhatUserConfig = {

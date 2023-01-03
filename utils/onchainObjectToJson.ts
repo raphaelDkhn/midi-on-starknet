@@ -1,13 +1,19 @@
-import { starknet } from "hardhat";
 import { decimals } from "./constants";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
 
-function getLongString(longStringObject: { [key: string]: BigInt }): string {
+function getLongString(
+  longStringObject: { [key: string]: BigInt },
+  hre: HardhatRuntimeEnvironment
+): string {
   return Object.values(longStringObject)
-    .map((bigInt) => starknet.bigIntToShortString(bigInt))
+    .map((bigInt) => hre.starknet.bigIntToShortString(bigInt))
     .join("");
 }
 
-export function onchainObjectToJson(obj: any): any {
+export function onchainObjectToJson(
+  obj: any,
+  hre: HardhatRuntimeEnvironment
+): any {
   const originalObj: any = {};
 
   for (const key of Object.keys(obj)) {
@@ -17,11 +23,11 @@ export function onchainObjectToJson(obj: any): any {
     const formatValue = (val: any, valType: string): any => {
       switch (valType) {
         case "obj":
-          return onchainObjectToJson(val);
+          return onchainObjectToJson(val, hre);
         case "shortStr":
-          return starknet.bigIntToShortString(val);
+          return hre.starknet.bigIntToShortString(val);
         case "longStr":
-          return getLongString(val);
+          return getLongString(val, hre);
         case "bool":
           return val == true;
         case "num":
@@ -42,4 +48,3 @@ export function onchainObjectToJson(obj: any): any {
 
   return originalObj;
 }
-
