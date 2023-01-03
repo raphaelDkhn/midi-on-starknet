@@ -52,7 +52,8 @@ const config: HardhatUserConfig = {
     starknetSources: "contracts",
   },
   starknet: {
-    venv: "active",
+    //venv: "active",
+    dockerizedVersion: "0.10.3",
     network: "integrated-devnet",
     wallets: {
       OpenZeppelin: {
@@ -66,7 +67,7 @@ const config: HardhatUserConfig = {
   networks: {
     integratedDevnet: {
       url: "http://127.0.0.1:5050",
-      args: ["--gas-price", "2000000000", "--fork-network", "alpha-goerli"],
+      args: ["--gas-price", "2000000000"],
     },
   },
 };
