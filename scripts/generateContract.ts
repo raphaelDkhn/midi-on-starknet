@@ -30,10 +30,10 @@ export async function generateContract(
     "\tpedersen_ptr : HashBuiltin*,\n",
     "\trange_check_ptr\n",
     "} (\n",
-    "\	tempo_flex: felt,\n",
-    "\	duration_flex: felt,\n",
-    "\	transposition: felt,\n",
-    "\	velocity_scale: felt,\n",
+    "	tempo_flex: felt,\n",
+    "	duration_flex: felt,\n",
+    "	transposition: felt,\n",
+    "	velocity_scale: felt,\n",
     ") -> (object: Root) {\n",
     "\n\t// build up the struct from bottom up\n",
     "\n\tlet object = Root (\n",
@@ -60,4 +60,6 @@ export async function generateContract(
   ];
 
   await writeInFile(fileName, array.join(""));
+
+  console.log("Contract created at: ", `contracts/${fileName}.cairo`);
 }

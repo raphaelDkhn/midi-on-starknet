@@ -8,4 +8,5 @@ export async function json2midi(jsonPath: string, resultPath: string) {
   midi.fromJSON(obj);
 
   fs.writeFileSync(resultPath, new Buffer(midi.toArray()));
+  console.log("MIDI file created at: ", resultPath);
 }

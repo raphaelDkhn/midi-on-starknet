@@ -5,6 +5,14 @@ import "@nomiclabs/hardhat-waffle";
 import "@shardlabs/starknet-hardhat-plugin";
 import { generateContract } from "./scripts/generateContract";
 import { json2midi } from "./scripts/json2midi";
+import { midi2json } from "./scripts/midi2json";
+
+task("midi2json", "convert midi to a midi JSON")
+  .addPositionalParam("midiPath", "path to the MIDI file")
+  .addPositionalParam("resultPath", "path to the JSON file")
+  .setAction(async ({ midiPath, resultPath }) => {
+    return await midi2json(midiPath, resultPath);
+  });
 
 task("json2midi", "convert midi JSON to a midi file")
   .addPositionalParam("jsonPath", "path to the JSON file")
