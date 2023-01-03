@@ -4,7 +4,7 @@
 An experimental project for representing musical MIDI data as a [Starknet](https://starkware.co/starknet/) smart contract.
 
 ## MIDI manipulation
-This project allows you to do midi manipulation: 
+This project allows you to do some midi manipulations: 
 
 - `Tempo flex`: change the tempos by a certain basis point.
 - `Duration flex`: change the duration of all notes in a MIDI by a certain basis point.
