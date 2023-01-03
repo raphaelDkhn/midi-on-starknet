@@ -6,7 +6,7 @@ import "@shardlabs/starknet-hardhat-plugin";
 import { generateContract } from "./scripts/generateContract";
 import { json2midi } from "./scripts/json2midi";
 import { midi2json } from "./scripts/midi2json";
-import { retreiveMidi } from "./scripts/retrieveMidi";
+import { retrieveMidi } from "./scripts/retrieveMidi";
 
 task("midi2json", "convert midi to a midi JSON")
   .addPositionalParam("midiPath", "path to the MIDI file")
@@ -59,7 +59,7 @@ task("retreiveMidi", "retrieve the midi object from a deployed contract")
       },
       hre
     ) => {
-      return await retreiveMidi(
+      return await retrieveMidi(
         contractName,
         address,
         resultPath,

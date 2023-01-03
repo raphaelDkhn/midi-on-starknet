@@ -7,7 +7,7 @@ import { decimals } from "../utils/constants";
 import { onchainObjectToJson } from "../utils/onchainObjectToJson";
 import * as fs from "fs";
 
-export async function retreiveMidi(
+export async function retrieveMidi(
   contractName: string,
   address: string,
   resultPath: string,
@@ -33,5 +33,7 @@ export async function retreiveMidi(
 
   const retreived_midi = onchainObjectToJson(retreived_object.object, hre);
   const midiJSON = JSON.stringify(retreived_midi);
-  fs.writeFileSync(resultPath, midiJSON);
+  fs.writeFileSync(__dirname + resultPath, midiJSON);
+
+  return retreived_midi;
 }
