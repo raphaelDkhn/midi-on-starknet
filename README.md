@@ -67,4 +67,3 @@ If you have any comments, suggestions, or encounter any problems, please let me 
  - [3d-asset-on-starknet by guiltygyoza](https://github.com/guiltygyoza/3d-asset-on-starknet)
  - [json2ts](https://github.com/GregorBiswanger/json2ts)
  - [Tone.js](https://github.com/Tonejs/Midi)
-# midi-on-starknet
